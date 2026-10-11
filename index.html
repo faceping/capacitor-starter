@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="color-scheme" content="light">
+  <title>FaceCheck</title>
+  <link rel="stylesheet" href="/src/style.css">
+</head>
+<body>
+  <main class="screen">
+    <header class="bar">
+      <h1>FaceCheck</h1>
+      <span class="pill" id="network" aria-label="Network available">Online</span>
+    </header>
+
+    <section class="card" aria-live="polite">
+      <svg class="face" viewBox="0 0 120 140" aria-hidden="true"><ellipse cx="60" cy="70" rx="44" ry="56"/><circle cx="44" cy="62" r="5"/><circle cx="76" cy="62" r="5"/><path d="M42 92q18 14 36 0"/></svg>
+      <div class="result">
+        <p class="title" id="title">Look at the camera</p>
+        <p class="note" id="note">Tap Enrol my face to start.</p>
+      </div>
+    </section>
+
+    <button type="button" class="button outline" id="enroll">Enrol my face</button>
+    <button type="button" class="button primary" id="verify" disabled>Verify</button>
+  </main>
+  <script type="module" src="/src/main.ts"></script>
+</body>
+</html>

@@ -1,0 +1,24 @@
+{
+  "originHash" : "10ad38b172d9ef41ef82ef370d433a91c103f99fe2189dc2773521d2739917cd",
+  "pins" : [
+    {
+      "identity" : "capacitor-swift-pm",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/ionic-team/capacitor-swift-pm.git",
+      "state" : {
+        "revision" : "4c7f346d16196e21fbe23d4a7a6fc7af62af6742",
+        "version" : "8.5.3"
+      }
+    },
+    {
+      "identity" : "faceping-ios",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/faceping/faceping-ios.git",
+      "state" : {
+        "revision" : "48108b1b5442715eb30b65beeb033d5fcc96b960",
+        "version" : "1.0.0-preview.3"
+      }
+    }
+  ],
+  "version" : 3
+}

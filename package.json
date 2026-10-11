@@ -1,0 +1,26 @@
+{
+  "name": "facecheck-capacitor",
+  "version": "1.0.0",
+  "private": true,
+  "description": "FaceCheck: enrol your face and verify it live, on the phone, offline. The FacePing starter app for Capacitor.",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "android": "npm run build && npx cap sync android && npx cap run android",
+    "ios": "npm run build && npx cap sync ios && npx cap run ios"
+  },
+  "dependencies": {
+    "@capacitor/android": "^8.5.3",
+    "@capacitor/core": "^8.5.3",
+    "@capacitor/ios": "^8.5.3",
+    "@capacitor/network": "^8.0.1",
+    "@faceping/capacitor": "1.0.0-preview.1"
+  },
+  "devDependencies": {
+    "@capacitor/cli": "^8.5.3",
+    "typescript": "^5.9.3",
+    "vite": "^8.3.4"
+  },
+  "license": "MIT"
+}
