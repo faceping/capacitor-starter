@@ -1,7 +1,12 @@
 apply plugin: 'com.android.application'
 
+// Check-in device mode: with VITE_FACEPING_DEVICE_TOKEN set in ../../.env.local, the app gets ".device" on its id and
+// the name "FaceCheck Device", so it installs next to the sandbox app instead of replacing it.
+def envFile = rootProject.file('../.env.local')
+def deviceMode = envFile.exists() && envFile.readLines().any { it.trim() ==~ /VITE_FACEPING_DEVICE_TOKEN=\S+/ }
+
 android {
-    namespace = "com.example.facecheck.capacitor"
+    namespace = "com.yourcompany.facecheck"
     compileSdk = rootProject.ext.compileSdkVersion
     defaultConfig {
         applicationId "com.yourcompany.facecheck"
@@ -9,6 +14,8 @@ android {
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1
         versionName "1.0"
+        if (deviceMode) applicationIdSuffix ".device"
+        manifestPlaceholders = [appLabel: deviceMode ? "FaceCheck Device" : "FaceCheck"]
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         // FacePing's native core is built for 64-bit phones (arm64-v8a) and x86_64 emulators only: ship just those.
         ndk {

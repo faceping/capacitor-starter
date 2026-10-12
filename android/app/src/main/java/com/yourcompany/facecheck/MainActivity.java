@@ -1,4 +1,4 @@
-package com.example.facecheck.capacitor;
+package com.yourcompany.facecheck;
 
 import com.getcapacitor.BridgeActivity;
 

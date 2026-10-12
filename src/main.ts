@@ -71,17 +71,28 @@ async function start() {
     refreshButtons();
     return;
   }
+  // On a check-in device, every sync (including the automatic ones, every 5 minutes) updates the screen.
+  if (DEVICE_MODE) await FacePing.addListener('synced', onSync);
   try {
     const sync = await FacePing.sync();
-    await refreshEnrolled();
-    if (DEVICE_MODE) showSync(sync);
+    if (DEVICE_MODE) {
+      // Shown here too, in case this first sync finished before the listener heard it.
+      await onSync(sync);
+    } else {
+      await refreshEnrolled();
+    }
   } catch (error) {
     showError(error);
     await refreshEnrolled();
   }
 }
 
-/** On a check-in device: say what the sync found. */
+/** On a check-in device: open Verify once the person is here, and say what the sync found. */
+async function onSync(sync: SyncResult) {
+  await refreshEnrolled();
+  showSync(sync);
+}
+
 function showSync(sync: SyncResult) {
   switch (sync.status) {
     case 'revoked':
@@ -96,7 +107,7 @@ function showSync(sync: SyncResult) {
     default:
       show(
         `${sync.enrolled} people synced`,
-        enrolled ? `${ID} is here: tap Verify.` : `${ID} isn't on this list yet. Enrol them on your server, then reopen the app.`,
+        enrolled ? `${ID} is here: tap Verify.` : `${ID} isn't on this list yet. Enrol them, and they appear here at the next sync.`,
         'ink',
       );
   }
